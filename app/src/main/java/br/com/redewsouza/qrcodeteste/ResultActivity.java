@@ -13,7 +13,10 @@ public class ResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
+        //Pega codigo
         String result = this.getIntent().getStringExtra("result");
+
+        //Insere no txt
         txtResult = (TextView) findViewById(R.id.txt_result);
         txtResult.setText(result);
 

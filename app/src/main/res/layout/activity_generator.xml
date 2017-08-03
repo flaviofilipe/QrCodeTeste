@@ -4,13 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="br.com.redewsouza.qrcodeteste.GeneratorActivity"
-    android:padding="16dp">
+    android:padding="16dp"
+    tools:context="br.com.redewsouza.qrcodeteste.GeneratorActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-    android:text="Qr Code generator" />
+    android:text="Qr Code generator"
+        android:gravity="center"
+        style="@style/Base.TextAppearance.AppCompat.Medium"/>
 
     <EditText
         android:id="@+id/edt_cod"
@@ -35,13 +37,14 @@
         android:background="@android:color/black"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="500dp"
         android:layout_below="@+id/view">
         <ImageView
             android:id="@+id/img_code"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"/>
     </LinearLayout>
 
 </RelativeLayout>

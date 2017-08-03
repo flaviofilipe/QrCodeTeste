@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
@@ -34,14 +35,21 @@ public class GeneratorActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 txtQr = edtCode.getText().toString().trim();
-                MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
-                try{
-                    BitMatrix bitMatrix = multiFormatWriter.encode(txtQr, BarcodeFormat.QR_CODE,500,500);
-                    BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
-                    Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
-                    imgCode.setImageBitmap(bitmap);
-                }catch (WriterException e){
-                    e.printStackTrace();
+                if (!txtQr.equals("")) {
+                    MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
+                    try {
+                        //Cria QR Code com tamanho 500
+                        BitMatrix bitMatrix = multiFormatWriter.encode(txtQr, BarcodeFormat.QR_CODE, 500, 500);
+                        BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+                        Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
+
+                        //Insere no campo img
+                        imgCode.setImageBitmap(bitmap);
+                    } catch (WriterException e) {
+                        e.printStackTrace();
+                    }
+                }else {
+                    Toast.makeText(GeneratorActivity.this,"Insira o conteudo do código",Toast.LENGTH_LONG).show();
                 }
             }
         });
